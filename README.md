@@ -17,7 +17,6 @@ shooting-game-frontend/
 │   └── App.tsx
 ├── tailwind.config.js
 ├── vite.config.ts
-├── Dockerfile               # フロント用Docker
 ├── .github/workflows/
 │   └── deploy.yml           # GitHub Actions for frontend
 └── README.md
