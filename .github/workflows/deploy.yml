@@ -2,7 +2,7 @@ name: Lint and Deploy based on Branch # ワークフローの名前
 
 on:
   push:
-    branches: [ "main", "develop" ] # mainとdevelopブランチへのプッシュ時に実行
+    branches: [ "main", "develop","cicd" ] # mainとdevelopブランチへのプッシュ時に実行
 
 jobs:
   lint:
