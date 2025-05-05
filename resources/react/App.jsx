@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../css/App.css'
 import Enemy from './components/Enemy';
 
+
 // 定数
 const AREA_WIDTH = 800;  // 発射エリアの幅
 const AREA_HEIGHT = 500; // 発射エリアの高さ
