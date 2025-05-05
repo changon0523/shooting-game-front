@@ -1,0 +1,50 @@
+name: Lint and Deploy based on Branch # ワークフローの名前
+
+on:
+  push:
+    branches: [ "main", "develop" ] # mainとdevelopブランチへのプッシュ時に実行
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest # lintジョブの実行環境
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3 # コードをチェックアウト
+
+      - name: Set up Node.js (例: JavaScriptプロジェクトの場合)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'v22.15.0' # 使用するNode.jsのバージョン
+
+      - name: Install dependencies (例: npmの場合)
+        run: npm install # 依存関係をインストール
+
+      - name: Run lint
+        run: npm run lint # lintを実行するコマンド
+
+  deploy:
+    needs: lint # lintジョブが成功した場合のみ実行
+    if: github.ref == 'refs/heads/main' # mainブランチへのプッシュの場合のみ実行
+    runs-on: ubuntu-latest # deployジョブの実行環境
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3 # コードをチェックアウト
+
+      - name: Set up Node.js (例: JavaScriptプロジェクトの場合)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'v22.15.0' # 使用するNode.jsのバージョン
+
+      - name: Install dependencies (例: npmの場合)
+        run: npm install # 依存関係をインストール
+
+      - name: Build project
+        run: npm run build # プロジェクトのビルドコマンド
+
+      - name: Deploy to production
+        run: |
+          # デプロイに必要なコマンドを実行
+          echo "Deploying to production server..."
+          # ... デプロイ処理の具体的なコマンド ...

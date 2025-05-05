@@ -1,13 +1,28 @@
-# React + Vite
+### リポジトリ構成（GitHub で 2 つ）
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- `shooting-game-frontend`（React + Tailwind）
+- `shooting-game-backend`（FastAPI）
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ディレクトリ構成（React + Vite）
 
-## Expanding the ESLint configuration
+```pgsql
+shooting-game-frontend/
+├── public/                  # 画像・faviconなど
+├── src/
+│   ├── components/          # UI部品
+│   ├── pages/               # Home, Ranking など
+│   ├── api/                 # API呼び出し（fetch wrapper）
+│   └── App.tsx
+├── tailwind.config.js
+├── vite.config.ts
+├── .github/workflows/
+│   └── deploy.yml           # GitHub Actions for frontend
+└── README.md
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# shooting-game-front
+- 🎯 **Render**でデプロイ
+- API URL は .env で設定：`VITE_API_URL=https://your-api.render.com`
+
+---
