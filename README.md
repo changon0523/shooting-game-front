@@ -1,4 +1,8 @@
-### リポジトリ構成（GitHub で 2 つ）
+## 成果物
+
+https://shooting-game-front.onrender.com/
+
+## リポジトリ構成（GitHub で 2 つ）
 
 - `shooting-game-frontend`（React + Tailwind）
 - `shooting-game-backend`（FastAPI）
