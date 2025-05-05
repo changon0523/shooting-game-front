@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../css/App.css'
+import Enemy from './components/Enemy.jsx';
 
 // 定数
 const AREA_WIDTH = 800;  // 発射エリアの幅
@@ -105,6 +106,8 @@ function App() {
         className="launch-area mx-auto relative bg-gray-900"
         style={{ width: `${AREA_WIDTH}px`, height: `${AREA_HEIGHT}px` }}
       >
+        <Enemy />
+        
         <div
           className="player bg-blue-500 absolute" // CSSクラスまたはスタイルで見た目を定義
           style={{
@@ -114,6 +117,7 @@ function App() {
             height: `${player.height}px`,
           }}
         />
+
         {/* 発射されたミサイルを描画 */}
         {missiles.map((missile) => (
           <div
