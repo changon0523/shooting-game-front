@@ -54,7 +54,7 @@ function App() {
     <div className="App text-center bg-gray-900 my-20 mx-auto relative overflow-hidden text-white">
       <h1>ミサイル発射デモ</h1>
       <div
-        className="launch-area mx-auto"
+        className="launch-area mx-auto relative"
         style={{ width: `${AREA_WIDTH}px`, height: `${AREA_HEIGHT}px` }}
       >
         {/* 発射されたミサイルを描画 */}
