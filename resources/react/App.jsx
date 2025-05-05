@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import '../css/App.css'
+import Enemy from './components/Enemy.jsx';
 
 // 定数
 const AREA_WIDTH = 400;  // 発射エリアの幅
@@ -57,6 +58,8 @@ function App() {
         className="launch-area mx-auto"
         style={{ width: `${AREA_WIDTH}px`, height: `${AREA_HEIGHT}px` }}
       >
+        <Enemy />
+        
         {/* 発射されたミサイルを描画 */}
         {missiles.map((missile) => (
           <div

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const getRandom = (min, max) => Math.random() * (max - min) + min;
 
-const SquareAnimation = () => {
+const Enemy = () => {
   const [squares, setSquares] = useState([]);
   const containerRef = useRef(null);
   const animationFrameId = useRef(null);
@@ -75,4 +75,4 @@ const SquareAnimation = () => {
   );
 };
 
-export default SquareAnimation;
+export default Enemy;
