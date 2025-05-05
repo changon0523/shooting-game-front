@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import '../css/App.css'
-import Enemy from './components/Enemy.jsx';
+import Enemy from './components/Enemy';
 
 // 定数
 const AREA_WIDTH = 400;  // 発射エリアの幅
