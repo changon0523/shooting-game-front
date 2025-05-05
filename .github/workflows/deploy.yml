@@ -43,8 +43,7 @@ jobs:
       - name: Build project
         run: npm run build # プロジェクトのビルドコマンド
 
-      - name: Deploy to production
+
+      - name: Trigger Render Deploy Hook
         run: |
-          # デプロイに必要なコマンドを実行
-          echo "Deploying to production server..."
-          # ... デプロイ処理の具体的なコマンド ...
+          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
