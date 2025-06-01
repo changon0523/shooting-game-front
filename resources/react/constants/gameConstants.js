@@ -5,7 +5,7 @@ export const AREA_HEIGHT = 600; // ゲームエリアの高さ
 // プレイヤーの設定
 export const PLAYER_WIDTH = 40;   // プレイヤーの幅
 export const PLAYER_HEIGHT = 30;  // プレイヤーの高さ
-export const PLAYER_SPEED = 8;    // プレイヤーの移動速度
+export const PLAYER_SPEED = 30;    // プレイヤーの移動速度
 export const PLAYER_INITIAL_X = AREA_WIDTH / 2 - PLAYER_WIDTH / 2;  // プレイヤーの初期X座標
 export const PLAYER_INITIAL_Y = AREA_HEIGHT - PLAYER_HEIGHT - 20;    // プレイヤーの初期Y座標
 
