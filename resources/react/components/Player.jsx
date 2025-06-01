@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   AREA_WIDTH,
   AREA_HEIGHT,
@@ -8,21 +8,40 @@ import {
 } from '../constants/gameConstants';
 
 const Player = ({ onMissileShoot, position, onPositionChange }) => {
+  const keysPressed = useRef({}); // 押されているキーを追跡
+  const animationFrameId = useRef(null);
+
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // プレイヤー移動 (矢印キー)
+      keysPressed.current[e.key] = true;
+
+      // ミサイル発射 (スペースキー)
+      if (e.key === ' ') {
+        e.preventDefault();
+        onMissileShoot(position);
+      }
+    };
+
+    const handleKeyUp = (e) => {
+      keysPressed.current[e.key] = false;
+    };
+
+    const updatePosition = () => {
       onPositionChange((prevPlayer) => {
         let newX = prevPlayer.x;
         let newY = prevPlayer.y;
 
-        // 押されたキーに応じて座標を更新
-        if (e.key === 'ArrowLeft') {
+        // 押されているキーに応じて座標を更新
+        if (keysPressed.current['ArrowLeft']) {
           newX = Math.max(0, prevPlayer.x - PLAYER_SPEED);
-        } else if (e.key === 'ArrowRight') {
+        }
+        if (keysPressed.current['ArrowRight']) {
           newX = Math.min(AREA_WIDTH - prevPlayer.width, prevPlayer.x + PLAYER_SPEED);
-        } else if (e.key === 'ArrowUp') {
+        }
+        if (keysPressed.current['ArrowUp']) {
           newY = Math.max(0, prevPlayer.y - PLAYER_SPEED);
-        } else if (e.key === 'ArrowDown') {
+        }
+        if (keysPressed.current['ArrowDown']) {
           newY = Math.min(AREA_HEIGHT - prevPlayer.height, prevPlayer.y + PLAYER_SPEED);
         }
 
@@ -32,15 +51,20 @@ const Player = ({ onMissileShoot, position, onPositionChange }) => {
         return prevPlayer;
       });
 
-      // ミサイル発射 (スペースキー)
-      if (e.key === ' ') {
-        e.preventDefault();
-        onMissileShoot(position);
-      }
+      animationFrameId.current = requestAnimationFrame(updatePosition);
     };
 
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+
+    // アニメーション開始
+    animationFrameId.current = requestAnimationFrame(updatePosition);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+      cancelAnimationFrame(animationFrameId.current);
+    };
   }, [position, onMissileShoot, onPositionChange]);
 
   return (
