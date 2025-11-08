@@ -30,3 +30,5 @@ shooting-game-frontend/
 - API URL は .env で設定：`VITE_API_URL=https://your-api.render.com`
 
 ---
+
+<!-- 後で消す -->
